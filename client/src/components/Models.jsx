@@ -12,8 +12,9 @@ const Models = () => {
   const [activeModel, setActiveModel] = useState(models[1]);
 
   return (
-    <section className="py-32 bg-dark-800/80 relative overflow-hidden backdrop-blur-md border-y border-white/5">
-      <div className="container mx-auto px-6">
+    <section className="py-32 relative overflow-hidden">
+      <div className="container mx-auto px-6 italic text-gray-500 mb-2 text-xs tracking-widest">Variation Selector</div>
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
           <h2 className="text-glow-cyan text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Variations</h2>
           <h3 className="text-4xl md:text-6xl font-black text-white">Find Your Fit</h3>

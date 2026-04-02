@@ -9,7 +9,6 @@ import CustomCursor from './components/CustomCursor';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 function App() {
-  const [isCursorActive, setIsCursorActive] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -19,7 +18,7 @@ function App() {
 
   return (
     <div className="bg-dark-900 min-h-screen text-gray-200 font-sans selection:bg-glow-purple/30 selection:text-white">
-      <CustomCursor active={isCursorActive} />
+      <CustomCursor />
       
       {/* Cinematic Top Progress Bar */}
       <motion.div 
@@ -56,12 +55,7 @@ function App() {
           <HeroScrollAnimation />
         </section>
         
-        <section 
-          id="specs" 
-          className="custom-cursor-zone"
-          onMouseEnter={() => setIsCursorActive(true)}
-          onMouseLeave={() => setIsCursorActive(false)}
-        >
+        <section id="specs" className="custom-cursor-zone">
           <Specifications />
         </section>
 
@@ -69,12 +63,7 @@ function App() {
           <FeaturesWithImages />
         </section>
         
-        <section 
-          id="howitworks" 
-          className="custom-cursor-zone"
-          onMouseEnter={() => setIsCursorActive(true)}
-          onMouseLeave={() => setIsCursorActive(false)}
-        >
+        <section id="howitworks" className="custom-cursor-zone">
           <HowItWorks />
         </section>
         

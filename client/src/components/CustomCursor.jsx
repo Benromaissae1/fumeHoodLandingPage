@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useSpring } from 'framer-motion';
 
-const CustomCursor = ({ active }) => {
+const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const cursorX = useSpring(mousePosition.x, { stiffness: 500, damping: 28 });
   const cursorY = useSpring(mousePosition.y, { stiffness: 500, damping: 28 });
@@ -14,6 +15,11 @@ const CustomCursor = ({ active }) => {
     };
 
     const handleHover = (e) => {
+      // Zone detection
+      const zone = e.target.closest('.custom-cursor-zone');
+      setIsActive(!!zone);
+
+      // Element-specific hover state
       if (e.target.closest('button, a, .group')) {
         setIsHovering(true);
       } else {
@@ -32,7 +38,7 @@ const CustomCursor = ({ active }) => {
 
   return (
     <motion.div 
-      animate={{ opacity: active ? 1 : 0 }}
+      animate={{ opacity: isActive ? 1 : 0 }}
       transition={{ duration: 0.3 }}
       className="fixed inset-0 pointer-events-none z-[9999] hidden lg:block"
     >
