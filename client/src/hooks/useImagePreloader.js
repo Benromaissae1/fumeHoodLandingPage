@@ -1,23 +1,19 @@
 import { useState, useEffect } from 'react';
 
-// Generates an array of image paths for the fumehood animation
-// Naming format: ezgif-frame-001.png up to ezgif-frame-069.png
-const getFramePaths = (frameCount = 69) => {
-  return Array.from({ length: frameCount }, (_, i) => {
-    const frameIndex = (i + 1).toString().padStart(3, '0');
-    // Public path for assets in Vite
-    return `/sequence/fumehoodimgs/ezgif-frame-${frameIndex}.png`;
-  });
-};
-
-export const useImagePreloader = (frameCount = 69) => {
+/**
+ * useImagePreloader hook to handle frame-by-frame image sequences
+ * @param {string[]} paths - Array of image URLs to preload
+ */
+export const useImagePreloader = (paths) => {
   const [images, setImages] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (!paths || paths.length === 0) return;
+
     let isCancelled = false;
-    const paths = getFramePaths(frameCount);
+    const frameCount = paths.length;
     let loadedCount = 0;
     const imgObjects = [];
 
@@ -39,7 +35,7 @@ export const useImagePreloader = (frameCount = 69) => {
     return () => {
       isCancelled = true;
     };
-  }, [frameCount]);
+  }, [paths]);
 
   return { images, loaded, progress };
 };
