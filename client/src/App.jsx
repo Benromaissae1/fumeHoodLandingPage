@@ -30,12 +30,7 @@ function App() {
       <nav className="fixed top-0 w-full z-[90] glass-panel border-b border-white/5 py-4">
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-glow-purple to-glow-blue flex items-center justify-center text-white text-[10px] font-bold tracking-tighter">
-              AL
-            </div>
-            <span className="font-bold text-[10px] tracking-[0.4em] hidden sm:block text-white uppercase select-none">
-              ARIAS <span className="text-gray-500 font-light italic ml-1">LAB SYSTEM</span>
-            </span>
+            <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain" />
           </div>
           <div className="flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hidden lg:flex">
             <a href="#showcase" className="hover:text-white transition-colors">Showcase</a>
@@ -78,10 +73,9 @@ function App() {
       <footer className="py-24 border-t border-white/5 bg-dark-900 relative z-10">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
-            <div className="max-w-xs">
+            <div className="max-w-sm">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-5 h-5 rounded bg-glow-blue"></div>
-                <span className="font-black text-[10px] tracking-[0.3em] uppercase">ARIAS LAB SYSTEM</span>
+                <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
               </div>
               <p className="text-gray-500 text-sm font-light">Leading the industry in precision containment and intelligent laboratory architecture since 2012.</p>
             </div>
@@ -114,7 +108,7 @@ function App() {
           </div>
           
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-[10px] text-gray-600 uppercase tracking-[0.2em]">
-            <p>© {new Date().getFullYear()} ARIAS LAB SYSTEM. All rights reserved. Engineering Future.</p>
+            <p>© {new Date().getFullYear()} ARIAS LABS. All rights reserved. Engineering Future.</p>
             <div className="flex gap-8">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <a href="#" className="hover:text-white transition-colors">Terms</a>
