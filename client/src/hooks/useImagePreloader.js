@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 const getFramePaths = (frameCount = 69) => {
   return Array.from({ length: frameCount }, (_, i) => {
     const frameIndex = (i + 1).toString().padStart(3, '0');
-    return `/src/assets/sequence/fumehoodimgs/ezgif-frame-${frameIndex}.png`;
+    // Public path for assets in Vite
+    return `/sequence/fumehoodimgs/ezgif-frame-${frameIndex}.png`;
   });
 };
 
