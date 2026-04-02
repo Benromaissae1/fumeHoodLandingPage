@@ -20,7 +20,12 @@ app.get('/', (req, res) => {
   res.send('Fume Hood Landing Page API is running.');
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export for Vercel
+module.exports = app;
+
+// Start Server locally if not running as a function
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
