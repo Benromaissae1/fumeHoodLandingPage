@@ -36,6 +36,21 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  .text-glow-cyan {
+    @apply text-cyan-400;
+    text-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+  }
+
+  .text-glow-purple {
+    @apply text-purple-400;
+    text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+  }
+
+  /* Zone-specific cursor hiding */
+  .custom-cursor-zone {
+    cursor: none !important;
+  }
 }
 
 /* Base canvas setup for smooth scroll */
