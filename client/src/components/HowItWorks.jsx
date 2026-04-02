@@ -15,17 +15,17 @@ const HowItWorks = () => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start start", "end end"]
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 70, // Lower stiffness for smoother transitions
+    damping: 35,   // Higher damping to prevent oscillation
     restDelta: 0.001
   });
 
   // Map scroll progress to frame index (0-19)
-  const currentFrame = useTransform(smoothProgress, [0.2, 0.8], [0, FRAME_COUNT - 1]);
+  const currentFrame = useTransform(smoothProgress, [0, 1], [0, FRAME_COUNT - 1]);
 
   const drawFrame = (index) => {
     if (!loaded || !canvasRef.current || !images[index]) return;
@@ -67,38 +67,32 @@ const HowItWorks = () => {
   }, [loaded]);
 
   return (
-    <section ref={containerRef} className="py-32 bg-dark-900 relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-24">
-          
-          {/* Left: Animation Canvas */}
-          <div className="flex-1 w-full relative group">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-dark-800 shadow-2xl"
-            >
-              <canvas ref={canvasRef} className="w-full h-full block" />
-              
-              {/* Premium Overlays */}
-              <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-tr from-glow-blue/10 via-transparent to-glow-purple/10"></div>
-              <div className="absolute inset-0 pointer-events-none z-10 shadow-[inset_0_0_100px_rgba(0,0,0,0.6)]"></div>
-              
-              {/* Subtle Scanline Effect */}
-              <div className="absolute inset-0 pointer-events-none z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-20"></div>
-
-              {/* Status Indicator */}
-              <div className="absolute top-8 left-8 z-20 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-glow-cyan animate-pulse"></div>
-                <span className="text-[10px] text-white/50 font-mono tracking-[0.2em] uppercase">Simulating Airflow Path</span>
-              </div>
-            </motion.div>
+    <section ref={containerRef} className="relative h-[200vh] bg-dark-900">
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-24">
             
-            {/* Background Glow */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-glow-blue/20 blur-[80px] rounded-full -z-10"></div>
-          </div>
+            {/* Left: Animation Canvas */}
+            <div className="flex-1 w-full relative group">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className="relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-dark-800 shadow-2xl"
+              >
+                <canvas ref={canvasRef} className="w-full h-full block" />
+                
+                {/* Premium Overlays */}
+                <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-tr from-glow-blue/10 via-transparent to-glow-purple/10"></div>
+                <div className="absolute inset-0 pointer-events-none z-10 shadow-[inset_0_0_100px_rgba(0,0,0,0.6)]"></div>
+                
+                {/* Subtle Scanline Effect */}
+                <div className="absolute inset-0 pointer-events-none z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-20"></div>
+              </motion.div>
+              
+              {/* Background Glow */}
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-glow-blue/20 blur-[80px] rounded-full -z-10"></div>
+            </div>
 
           <div className="flex-1 space-y-12">
             <div>
@@ -130,6 +124,7 @@ const HowItWorks = () => {
             </div>
           </div>
 
+          </div>
         </div>
       </div>
     </section>
