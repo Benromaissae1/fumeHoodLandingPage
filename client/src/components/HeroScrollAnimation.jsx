@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from 'react';
 import { useScroll, useTransform, motion, useSpring } from 'framer-motion';
 import { useImagePreloader } from '../hooks/useImagePreloader';
 
-const FRAME_COUNT = 69;
+const FRAME_COUNT = 70;
 const HERO_PATHS = Array.from({ length: FRAME_COUNT }, (_, i) => {
-  const frameIndex = (i + 1).toString().padStart(3, '0');
-  return `/sequence/fumehoodimgs/ezgif-frame-${frameIndex}.png`;
+  const frameIndex = (i + 1).toString().padStart(4, '0');
+  return `/sequence/fumehoodimgs/${frameIndex}.png`;
 });
 
 const HeroScrollAnimation = () => {
