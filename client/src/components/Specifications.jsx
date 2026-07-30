@@ -25,7 +25,7 @@ const Specifications = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
             <h2 className="text-glow-cyan text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Engineering Excellence</h2>
-            <h3 className="text-4xl md:text-6xl font-black text-white mb-6">Technical <br/> Specifications</h3>
+            <h3 className="text-4xl md:text-6xl font-black text-white mb-6">Technical <br /> Specifications</h3>
             <p className="text-gray-400 text-lg">Real data from real engineering. Every component of Arius Lab System hoods is built to exceed global standards.</p>
           </div>
           <div className="pb-2">
@@ -37,7 +37,7 @@ const Specifications = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-white/10">
           {specs.map((spec, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -48,7 +48,7 @@ const Specifications = () => {
               <span className="text-[10px] text-gray-500 uppercase tracking-widest mb-2 block group-hover:text-glow-cyan transition-colors">{spec.label}</span>
               <div className="text-2xl font-bold text-white mb-2 leading-tight uppercase">{spec.value}</div>
               <div className="text-[10px] text-gray-600 font-mono italic uppercase tracking-tighter">{spec.sub}</div>
-              
+
               {/* Subtle accent bar */}
               <div className="w-0 h-[1px] bg-glow-cyan mt-6 group-hover:w-full transition-all duration-500"></div>
             </motion.div>
