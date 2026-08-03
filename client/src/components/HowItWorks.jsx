@@ -96,30 +96,29 @@ const HowItWorks = () => {
 
           <div className="flex-1 space-y-12">
             <div>
-              <h2 className="text-glow-purple text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">The Science</h2>
-              <h3 className="text-4xl md:text-6xl font-black text-white mb-8">How it <br/> Works</h3>
-              <p className="text-gray-400 font-light max-w-md">Our advanced aerodynamics engine handles complex chemical containment with microscopic precision.</p>
+              <h2 className="text-glow-purple text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Airflow Protection</h2>
+              <h3 className="text-4xl md:text-6xl font-black text-white mb-8">How Airflow Protects The Operator</h3>
             </div>
 
             <div className="space-y-10">
               <div className="group">
-                <div className="text-glow-cyan font-mono text-xs mb-2">/ INTAKE</div>
-                <h4 className="text-xl font-bold text-white mb-2">Direct Flow Injection</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">Ambient air is drawn from the lab at a precise velocity, creating a protective barrier at the sash.</p>
+                <div className="text-glow-cyan font-mono text-xs mb-2">/ CAPTURE</div>
+                <h4 className="text-xl font-bold text-white mb-2">Capture</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">Air is drawn through the front opening to contain vapors and maintain a protective working zone.</p>
                 <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
               </div>
               
               <div className="group">
-                <div className="text-glow-purple font-mono text-xs mb-2">/ FILTRATION</div>
-                <h4 className="text-xl font-bold text-white mb-2">Molecular Scrubbing</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">Air enters the vortex chamber where hazardous vapors are stabilized before being moved to the exhaust plenum.</p>
+                <div className="text-glow-purple font-mono text-xs mb-2">/ CONTAIN</div>
+                <h4 className="text-xl font-bold text-white mb-2">Contain</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">Internal airflow guides fumes away from the operator and toward the exhaust path.</p>
                 <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
               </div>
 
               <div className="group">
                 <div className="text-glow-blue font-mono text-xs mb-2">/ EXHAUST</div>
-                <h4 className="text-xl font-bold text-white mb-2">Secure Displacement</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">Purified air is safely displaced through high-velocity ducts, into the facility central exhaust system.</p>
+                <h4 className="text-xl font-bold text-white mb-2">Exhaust</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">Contaminated air is directed to the exhaust or filtration system for safe removal from the workspace.</p>
               </div>
             </div>
           </div>

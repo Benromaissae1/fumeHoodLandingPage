@@ -16,8 +16,9 @@ const Models = () => {
       <div className="container mx-auto px-6 italic text-gray-500 mb-2 text-xs tracking-widest">Variation Selector</div>
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-24">
-          <h2 className="text-glow-cyan text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Variations</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-white">Find Your Fit</h3>
+          <h2 className="text-glow-cyan text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Model Range</h2>
+          <h3 className="text-4xl md:text-6xl font-black text-white">Choose The Right Fume Hood Size</h3>
+          <p className="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">Available in multiple widths to match different laboratory layouts and workflow requirements.</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-16 items-center">

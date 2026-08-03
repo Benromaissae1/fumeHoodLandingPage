@@ -97,13 +97,13 @@ const HeroScrollAnimation = () => {
     <div ref={containerRef} className="relative h-[250vh] w-full bg-dark-900 overflow-visible">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         
-        {/* Cinematic Gradient Lighting Overlay */}
-        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-dark-900/40 via-transparent to-dark-900/60"></div>
-        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-r from-dark-900/60 via-transparent to-dark-900/60"></div>
+        {/* Subtle background treatment */}
+        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-[#0a0f14]/40 via-transparent to-[#0a0f14]/70"></div>
+        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-r from-[#0a0f14]/70 via-transparent to-[#0a0f14]/70"></div>
         
-        {/* Radial Glows */}
-        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-glow-blue/10 blur-[150px] rounded-full z-10 animate-pulse"></div>
-        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-glow-purple/10 blur-[150px] rounded-full z-10 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        {/* Soft radial glows */}
+        <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-sky-500/8 blur-[120px] rounded-full z-10"></div>
+        <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-cyan-500/6 blur-[120px] rounded-full z-10" style={{ animationDelay: '1s' }}></div>
 
         {/* Loading State */}
         {!loaded && (
@@ -113,7 +113,7 @@ const HeroScrollAnimation = () => {
               animate={{ scaleX: progress / 100 }}
               className="w-64 h-0.5 bg-glow-cyan shadow-[0_0_15px_#06b6d4] origin-left mb-6"
             />
-            <p className="text-gray-500 text-[10px] tracking-[0.5em] font-mono uppercase">Initializing Cinematic Core {Math.round(progress)}%</p>
+            <p className="text-gray-500 text-[10px] tracking-[0.5em] font-mono uppercase">Loading airflow data {Math.round(progress)}%</p>
           </div>
         )}
 
@@ -122,43 +122,42 @@ const HeroScrollAnimation = () => {
         </motion.div>
 
         {/* Hero Overlay Text */}
-        <div className="absolute inset-0 z-30 pointer-events-none flex flex-col justify-center px-6 md:px-20">
+        <div className="absolute inset-0 z-30 pointer-events-none flex items-center px-6 md:px-20">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl"
+            className="max-w-xl lg:max-w-lg"
           >
             <motion.span 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="inline-block text-glow-cyan text-[10px] tracking-[0.6em] uppercase mb-6 font-semibold"
+              className="inline-block text-cyan-300 text-[10px] tracking-[0.45em] uppercase mb-6 font-semibold"
             >
-              The New Dimension of Laboratory Safety
+              Laboratory Fume Extraction Systems
             </motion.span>
-            <h1 className="text-5xl md:text-8xl font-black text-white leading-tight mb-8">
-              Next-Generation <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-500">
-                Fume Hood
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] mb-6">
+              ARIAS <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-white to-slate-400">
+                Fume Hoods
               </span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl font-light max-w-xl mb-12 leading-relaxed">
-              Engineered for Safety, <span className="text-white font-medium">Precision</span>, and <span className="text-white font-medium">Performance</span>. 
-              The cinematic standard for high-containment environments.
+            <p className="text-gray-400 text-base md:text-lg font-light max-w-md mb-8 leading-relaxed">
+              Safe, ergonomic, and adaptable fume extraction systems for modern laboratories.
             </p>
             
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-6">
               <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-white text-dark-900 font-bold rounded-full transition-shadow hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] pointer-events-auto"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-7 py-3 bg-white text-slate-900 font-semibold rounded-lg transition-all pointer-events-auto shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
               >
-                Experience Now
+                Request a Quote
               </motion.button>
               <div className="md:flex flex-col hidden">
-                <span className="text-[10px] text-gray-500 tracking-widest uppercase mb-1">Standard Compliance</span>
-                <span className="text-sm text-gray-300 font-medium">ASHRAE 110-2016 Certified</span>
+                <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-1">Designed for</span>
+                <span className="text-sm text-gray-300 font-medium">Reliable airflow performance</span>
               </div>
             </div>
           </motion.div>

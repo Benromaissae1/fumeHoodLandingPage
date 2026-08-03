@@ -6,34 +6,27 @@ import {
 } from 'lucide-react';
 
 const featureList = [
-  { icon: <Wind />, title: 'Advanced Airflow', desc: 'Precision fluid dynamics for maximum containment and safety.' },
-  { icon: <Layout />, title: 'Smart LCD Panel', desc: 'Touch-enabled interface for real-time environmental monitoring.' },
-  { icon: <FlaskConical />, title: 'Chemical Defense', desc: 'Epoxy-steel build resistant to 200+ corrosive substances.' },
-  { icon: <ShieldAlert />, title: 'Safety Watch', desc: 'Triple-redundancy alarms for flow and sash levels.' },
-  { icon: <Zap />, title: 'Energy VAC', desc: 'Eco-mode reduces lab HVAC costs by up to 40% annually.' },
-  { icon: <Cpu />, title: 'Precision Build', desc: 'Robotic assembly ensuring millimeter-perfect engineering.' },
-  { icon: <Eye />, title: 'Intelligent Auto-Sash', desc: 'IR sensors automatically adjust sash height based on user presence.' },
-  { icon: <Sun />, title: 'Spectral-Pure LED', desc: 'High-CRI flicker-free lighting with adjustable color temperatures.' },
-  { icon: <Activity />, title: 'Vibration Isolation', desc: 'Specialized mounting to stabilize sensitive analytical measurements.' },
-  { icon: <ShieldCheck />, title: 'VOC Active Guardian', desc: 'Integrated sensors trigger high-purge modes if vapors are detected.' },
+  { icon: <Wind />, title: 'Reliable containment airflow', desc: 'Consistent face velocity supports operator safety and effective vapor capture.' },
+  { icon: <FlaskConical />, title: 'Chemical-resistant surfaces', desc: 'Durable interior finishes help withstand routine chemical exposure.' },
+  { icon: <ShieldAlert />, title: 'Tempered safety glass sash', desc: 'Impact-resistant glazing supports visibility and operator protection.' },
+  { icon: <Layout />, title: 'Ergonomic working opening', desc: 'Balanced sash movement and clear access support efficient daily use.' },
+  { icon: <Zap />, title: 'Integrated service utilities', desc: 'Built-in gas, water, and electrical connections are designed for lab workflows.' },
+  { icon: <Sun />, title: 'LED lighting', desc: 'Bright, uniform illumination improves visibility without excessive heat.' },
+  { icon: <Activity />, title: 'Audio/visual airflow alarms', desc: 'Operator alerts help identify low-flow conditions and airflow deviations.' },
+  { icon: <Cpu />, title: 'Multiple width options', desc: 'Available in a range of dimensions to suit different bench layouts and tasks.' },
+  { icon: <ShieldCheck />, title: 'Optional filtration', desc: 'A filtration upgrade can support additional capture and exhaust flexibility.' },
+  { icon: <Eye />, title: 'Easy maintenance access', desc: 'Service access is designed to simplify routine inspection and upkeep.' },
 ];
 
-const FeatureIcon = ({ icon, gradient }) => (
-  <div className={`w-full aspect-[16/10] rounded-2xl relative overflow-hidden group/icon mb-8 flex items-center justify-center bg-white/[0.03] border border-white/5 hover:border-white/20 transition-all duration-500`}>
-    <div className={`absolute inset-0 opacity-0 group-hover/icon:opacity-20 transition-opacity duration-700 bg-gradient-to-br ${gradient}`}></div>
-    
-    {/* Animated background rings */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-32 h-32 rounded-full border border-white/5 group-hover/icon:scale-[2] group-hover/icon:opacity-0 transition-all duration-1000"></div>
-      <div className="w-24 h-24 rounded-full border border-white/5 group-hover/icon:scale-[1.5] group-hover/icon:opacity-0 transition-all duration-700 delay-100"></div>
+const FeatureIcon = ({ icon }) => (
+  <div className="w-full aspect-[16/10] rounded-lg relative overflow-hidden group/icon mb-6 flex items-center justify-center bg-[#0f1720] border border-white/10 transition-all duration-300 hover:border-cyan-400/30">
+    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent"></div>
+
+    <div className="relative z-10 text-slate-200 transition-transform duration-300 group-hover/icon:scale-[1.04]">
+      {React.cloneElement(icon, { size: 42, strokeWidth: 1.5, className: "text-slate-200" })}
     </div>
 
-    <div className="relative z-10 text-white group-hover:scale-110 transition-transform duration-500">
-      {React.cloneElement(icon, { size: 48, strokeWidth: 1.5, className: "text-white/80 group-hover:text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]" })}
-    </div>
-
-    {/* Bottom Glow */}
-    <div className={`absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r ${gradient} opacity-50`}></div>
+    <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></div>
   </div>
 );
 
@@ -54,28 +47,28 @@ const FeaturesWithImages = () => {
   return (
     <section className="py-32 relative overflow-hidden bg-transparent">
       {/* Top Blend Gradient */}
-      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-dark-900 to-transparent pointer-events-none z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#0b1016] to-transparent pointer-events-none z-0"></div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <h2 className="text-glow-purple text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Unrivaled Capability</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-white mb-6">Built for the <br/> Modern Laboratory</h3>
-          <p className="text-gray-400 font-light">Precision engineering combined with intelligent interaction design.</p>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-cyan-300 text-[10px] tracking-[0.35em] uppercase mb-4 font-bold">Safety Features</h2>
+          <h3 className="text-3xl md:text-5xl font-black text-white mb-5">Built for reliable laboratory performance</h3>
+          <p className="text-gray-400 font-light text-sm md:text-base">Designed to support safe operations, durable materials, and practical daily use in active laboratory environments.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {featureList.map((f, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
+              transition={{ delay: i * 0.04 }}
               viewport={{ once: true }}
-              className="group cursor-pointer"
+              className="group"
             >
-              <FeatureIcon icon={f.icon} gradient={gradients[i % gradients.length]} />
+              <FeatureIcon icon={f.icon} />
               <div className="px-1">
-                 <h4 className="text-lg font-bold text-white group-hover:text-glow-cyan transition-colors mb-3 leading-tight">{f.title}</h4>
+                 <h4 className="text-base font-semibold text-white group-hover:text-cyan-300 transition-colors mb-2 leading-snug">{f.title}</h4>
                  <p className="text-gray-500 text-xs leading-relaxed font-light">{f.desc}</p>
               </div>
             </motion.div>

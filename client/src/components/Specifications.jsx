@@ -2,14 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const specs = [
-  { label: 'Airflow Capacity', value: 'Up to 2350 m³/h', sub: 'High-VolumePurge' },
-  { label: 'Blower Type', value: 'Polypropylene', sub: 'Integrated System' },
-  { label: 'Material', value: 'Powder-Coated Steel', sub: 'Chemical Resistant' },
-  { label: 'Glass', value: '6mm Tempered', sub: 'Safety Standard' },
-  { label: 'Worktop', value: '28mm Ceramic', sub: 'Heat Resistant' },
-  { label: 'Control System', value: 'LCD Monitoring', sub: 'Smart Flow v2' },
-  { label: 'Safety Features', value: 'Audio/Visual Alarms', sub: 'Real-time Alerts' },
-  { label: 'Energy Tech', value: 'Variable Air (VAC)', sub: 'Efficiency Mode' },
+  { label: 'Airflow Capacity', value: '1,000–1,900 m³/h', sub: 'Face Velocity Control' },
+  { label: 'Structure Material', value: 'Powder-Coated Steel', sub: 'Corrosion Resistant' },
+  { label: 'Internal Lining', value: 'Epoxy Resin Panels', sub: 'Chemical Resistant' },
+  { label: 'Worktop', value: 'Phenolic / Ceramic', sub: 'Heat & Chemical Grade' },
+  { label: 'Sash Glass', value: '6 mm Tempered', sub: 'Safety Rated' },
+  { label: 'Lighting', value: 'LED Panel', sub: 'High-Efficiency Illumination' },
+  { label: 'Safety Alarms', value: 'Audio/Visual Alerts', sub: 'Airflow Monitoring' },
+  { label: 'Optional Filter Unit', value: 'Activated Carbon', sub: 'Filtration Upgrade' },
 ];
 
 const Specifications = () => {
@@ -24,14 +24,9 @@ const Specifications = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-glow-cyan text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Engineering Excellence</h2>
+            <h2 className="text-glow-cyan text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Technical Overview</h2>
             <h3 className="text-4xl md:text-6xl font-black text-white mb-6">Technical <br /> Specifications</h3>
-            <p className="text-gray-400 text-lg">Real data from real engineering. Every component of Arius Lab System hoods is built to exceed global standards.</p>
-          </div>
-          <div className="pb-2">
-            <div className="px-4 py-2 border border-white/10 rounded-full text-[10px] text-gray-500 tracking-widest uppercase">
-              Revised: Sept 2026
-            </div>
+            <p className="text-gray-400 text-lg">ARIAS Lab Systems are designed for dependable containment, durable construction, and consistent laboratory airflow performance.</p>
           </div>
         </div>
 

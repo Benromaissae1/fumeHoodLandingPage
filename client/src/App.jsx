@@ -20,64 +20,66 @@ function App() {
     <div className="bg-dark-900 min-h-screen text-gray-200 font-sans selection:bg-glow-purple/30 selection:text-white">
       <CustomCursor />
       
-      {/* Cinematic Top Progress Bar */}
+      {/* Page progress bar */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-glow-blue via-glow-purple to-glow-cyan origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-500 via-cyan-400 to-slate-300 origin-left z-[100]"
         style={{ scaleX }}
       />
       
       {/* Minimal Elite Navigation */}
-      <nav className="fixed top-0 w-full z-[90] glass-panel border-b border-white/5 py-4">
+      <nav className="fixed top-0 w-full z-[90] glass-panel border-b border-white/5 py-4 bg-[#0a0f14]/80 backdrop-blur-md">
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain" />
           </div>
           <div className="flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hidden lg:flex">
-            <a href="#showcase" className="hover:text-white transition-colors">Showcase</a>
-            <a href="#specs" className="hover:text-white transition-colors">Specs</a>
-            <a href="#features" className="hover:text-white transition-colors">Features</a>
+            <a href="#showcase" className="hover:text-white transition-colors">Overview</a>
+            <a href="#specs" className="hover:text-white transition-colors">Technical Specs</a>
+            <a href="#features" className="hover:text-white transition-colors">Safety Features</a>
             <a href="#models" className="hover:text-white transition-colors">Models</a>
           </div>
           <button className="px-6 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95">
-            Configure
+            Request Quote
           </button>
         </div>
       </nav>
 
       {/* Main Experience */}
       <main>
-        <section id="showcase">
+        <section id="showcase" className="border-b border-white/5 bg-[#0b1016]">
           <HeroScrollAnimation />
         </section>
         
-        <section id="specs" className="custom-cursor-zone">
+        <section id="specs" className="custom-cursor-zone border-t border-white/5 bg-[#0d131a]">
           <Specifications />
         </section>
 
-        <section id="features">
+        <section id="features" className="border-t border-white/5 bg-[#0b1016]">
           <FeaturesWithImages />
         </section>
         
-        <section id="howitworks" className="custom-cursor-zone">
+        <section id="howitworks" className="custom-cursor-zone border-t border-white/5 bg-[#101821]">
           <HowItWorks />
         </section>
         
-        <section id="models">
+        <section id="models" className="border-t border-white/5 bg-[#0c1219]">
           <Models />
         </section>
         
-        <CTA />
+        <div className="border-t border-white/5 bg-[#0b1016]">
+          <CTA />
+        </div>
       </main>
 
       {/* Industrial Footer */}
-      <footer className="py-24 border-t border-white/5 bg-dark-900 relative z-10">
+      <footer className="py-24 border-t border-white/5 bg-[#090d12] relative z-10">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
             <div className="max-w-sm">
               <div className="flex items-center gap-3 mb-6">
                 <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-gray-500 text-sm font-light">Leading the industry in precision containment and intelligent laboratory architecture since 2012.</p>
+              <p className="text-gray-500 text-sm font-light">Spanish laboratory furniture and fume hood manufacturer with more than 20 years of experience.</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">
               <div className="space-y-4">
@@ -108,7 +110,7 @@ function App() {
           </div>
           
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-[10px] text-gray-600 uppercase tracking-[0.2em]">
-            <p>© {new Date().getFullYear()} ARIAS LABS. All rights reserved. Engineering Future.</p>
+            <p>© {new Date().getFullYear()} ARIAS LABS. All rights reserved.</p>
             <div className="flex gap-8">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <a href="#" className="hover:text-white transition-colors">Terms</a>
@@ -118,8 +120,8 @@ function App() {
         </div>
       </footer>
 
-      {/* Global Cinematic Bloom Gradient */}
-      <div className="fixed bottom-0 left-0 w-full h-[50vh] bg-gradient-to-t from-glow-purple/5 to-transparent pointer-events-none z-0"></div>
+      {/* Global bloom gradient */}
+      <div className="fixed bottom-0 left-0 w-full h-[40vh] bg-gradient-to-t from-sky-500/5 via-transparent to-transparent pointer-events-none z-0"></div>
     </div>
   );
 }
