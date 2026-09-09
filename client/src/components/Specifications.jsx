@@ -1,24 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const specs = [
-  { label: 'Airflow Capacity', value: '1,000–1,900 m³/h', sub: 'Face Velocity Control' },
-  { label: 'Structure Material', value: 'Powder-Coated Steel', sub: 'Corrosion Resistant' },
-  { label: 'Internal Lining', value: 'Epoxy Resin Panels', sub: 'Chemical Resistant' },
-  { label: 'Worktop', value: 'Phenolic / Ceramic', sub: 'Heat & Chemical Grade' },
-  { label: 'Sash Glass', value: '6 mm Tempered', sub: 'Safety Rated' },
-  { label: 'Lighting', value: 'LED Panel', sub: 'High-Efficiency Illumination' },
-  { label: 'Safety Alarms', value: 'Audio/Visual Alerts', sub: 'Airflow Monitoring' },
-  { label: 'Optional Filter Unit', value: 'Activated Carbon', sub: 'Filtration Upgrade' },
-];
+const groupedSpecs = {
+  Airflow: [
+    { label: 'Airflow Capacity', value: '1,000–1,900 m³/h', sub: 'Variable face velocity control' },
+    { label: 'Capture Performance', value: 'EN 14175 / ASHRAE 110', sub: 'Testable containment performance' },
+  ],
+  Construction: [
+    { label: 'Structure', value: 'Powder-coated steel', sub: 'Durable corrosion-resistant frame' },
+    { label: 'Interior', value: 'Epoxy / Phenolic', sub: 'Chemical-resistant lining and worktop options' },
+  ],
+  Safety: [
+    { label: 'Sash', value: 'Tempered glass', sub: 'Counterbalanced, safety-rated' },
+    { label: 'Alarms', value: 'Audio & visual', sub: 'Low-flow and fault alerts' },
+  ],
+  Options: [
+    { label: 'Filtration', value: 'Activated carbon (optional)', sub: 'For certain non-acidic vapours' },
+    { label: 'Utilities', value: 'Gas / Water / Power', sub: 'Factory-ready service rails' },
+  ]
+};
 
 const Specifications = () => {
   return (
     <section className="py-32 bg-dark-900 relative overflow-hidden">
-      {/* Background Tech Texture */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
-        <div className="text-[20rem] font-black absolute -top-20 -left-20 leading-none">TECH</div>
-        <div className="text-[20rem] font-black absolute -bottom-20 -right-20 leading-none text-right">SPEC</div>
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none select-none">
+        <div className="absolute -top-8 -left-8 text-[5rem] font-black leading-none text-white/3">TECH</div>
+        <div className="absolute -bottom-8 -right-8 text-[5rem] font-black leading-none text-white/3">SPEC</div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -30,23 +38,20 @@ const Specifications = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-white/10">
-          {specs.map((spec, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="p-10 border-r border-b border-white/10 hover:bg-white/[0.02] transition-colors group"
-            >
-              <span className="text-[10px] text-gray-500 uppercase tracking-widest mb-2 block group-hover:text-glow-cyan transition-colors">{spec.label}</span>
-              <div className="text-2xl font-bold text-white mb-2 leading-tight uppercase">{spec.value}</div>
-              <div className="text-[10px] text-gray-600 font-mono italic uppercase tracking-tighter">{spec.sub}</div>
-
-              {/* Subtle accent bar */}
-              <div className="w-0 h-[1px] bg-glow-cyan mt-6 group-hover:w-full transition-all duration-500"></div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {Object.entries(groupedSpecs).map(([groupName, items], gi) => (
+            <div key={groupName} className="p-6 bg-transparent border border-white/5 rounded-2xl">
+              <h4 className="text-[10px] text-gray-400 uppercase tracking-widest mb-4 font-semibold">{groupName}</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {items.map((spec, index) => (
+                  <motion.div key={index} initial={{ opacity: 0, y: 6 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.06 + gi * 0.04 }} viewport={{ once: true }} className="p-4 rounded-md hover:bg-white/[0.02] transition-colors">
+                    <div className="text-[10px] text-gray-500 uppercase tracking-widest mb-2">{spec.label}</div>
+                    <div className="text-lg font-bold text-white mb-1">{spec.value}</div>
+                    <div className="text-xs text-gray-400">{spec.sub}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { submitContact } from '../api';
+import { useEffect } from 'react';
 
 const CTA = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', company: '', phone: '', location: '', model: '', quantity: '1', timeline: '', message: '' });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
 
   const handleSubmit = async (e) => {
@@ -20,6 +21,18 @@ const CTA = () => {
       setStatus({ loading: false, success: false, error: err.error || 'Request failed' });
     }
   };
+
+  useEffect(() => {
+    try {
+      const pre = localStorage.getItem('prefillModel');
+      if (pre) {
+        setForm(f => ({ ...f, model: pre }));
+        localStorage.removeItem('prefillModel');
+      }
+    } catch (err) {
+      // ignore
+    }
+  }, []);
 
   return (
     <section id="contact" className="py-40 bg-dark-900 relative overflow-hidden">
@@ -64,10 +77,76 @@ const CTA = () => {
                 className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
               />
             </div>
+
+            <div className="space-y-3">
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Company</label>
+              <input 
+                type="text" 
+                placeholder="Company / Institution"
+                value={form.company}
+                onChange={e => setForm({...form, company: e.target.value})}
+                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
+              />
+            </div>
+            <div className="space-y-3">
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Phone (optional)</label>
+              <input 
+                type="tel" 
+                placeholder="Phone number"
+                value={form.phone}
+                onChange={e => setForm({...form, phone: e.target.value})}
+                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
+              />
+            </div>
+
+            <div className="space-y-3">
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Location</label>
+              <input 
+                type="text" 
+                placeholder="City, Country"
+                value={form.location}
+                onChange={e => setForm({...form, location: e.target.value})}
+                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
+              />
+            </div>
+
+            <div className="space-y-3">
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Desired Model / Width</label>
+              <input 
+                type="text" 
+                placeholder="Model or width (e.g., 1200 mm)"
+                value={form.model}
+                onChange={e => setForm({...form, model: e.target.value})}
+                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
+              />
+            </div>
+
+            <div className="space-y-3">
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Quantity</label>
+              <input 
+                type="number" 
+                min="1"
+                value={form.quantity}
+                onChange={e => setForm({...form, quantity: e.target.value})}
+                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
+              />
+            </div>
+
+            <div className="space-y-3">
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Target Timeline</label>
+              <input 
+                type="text" 
+                placeholder="e.g., Q3 2026, Immediate"
+                value={form.timeline}
+                onChange={e => setForm({...form, timeline: e.target.value})}
+                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
+              />
+            </div>
+
             <div className="md:col-span-2 space-y-3">
               <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Project Requirements</label>
               <textarea 
-                placeholder="Project Requirements"
+                placeholder="Project Requirements (processes, special utilities, notes)"
                 rows="4"
                 required
                 value={form.message}
@@ -89,7 +168,7 @@ const CTA = () => {
           </form>
 
           {status.error && <p className="mt-8 text-red-500 font-bold uppercase tracking-widest text-[10px]">{status.error}</p>}
-          {status.success && <p className="mt-8 text-glow-cyan font-bold uppercase tracking-widest text-[10px]">Transmission Successful. Awaiting Engineering Callback.</p>}
+          {status.success && <p className="mt-8 text-glow-cyan font-bold uppercase tracking-widest text-[10px]">Thanks — our engineering team will review your request and contact you shortly.</p>}
         </motion.div>
       </div>
     </section>

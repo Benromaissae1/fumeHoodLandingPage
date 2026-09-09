@@ -32,15 +32,16 @@ function App() {
           <div className="flex items-center gap-4">
             <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain" />
           </div>
-          <div className="flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hidden lg:flex">
+          <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hidden lg:flex">
             <a href="#showcase" className="hover:text-white transition-colors">Overview</a>
-            <a href="#specs" className="hover:text-white transition-colors">Technical Specs</a>
-            <a href="#features" className="hover:text-white transition-colors">Safety Features</a>
+            <a href="#specs" className="hover:text-white transition-colors">Specs</a>
+            <a href="#features" className="hover:text-white transition-colors">Safety</a>
+            <a href="#howitworks" className="hover:text-white transition-colors">Airflow</a>
             <a href="#models" className="hover:text-white transition-colors">Models</a>
           </div>
-          <button className="px-6 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95">
+          <a href="#contact" className="px-6 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95">
             Request Quote
-          </button>
+          </a>
         </div>
       </nav>
 

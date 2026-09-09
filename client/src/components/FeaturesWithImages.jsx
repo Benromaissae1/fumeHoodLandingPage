@@ -6,16 +6,12 @@ import {
 } from 'lucide-react';
 
 const featureList = [
-  { icon: <Wind />, title: 'Reliable containment airflow', desc: 'Consistent face velocity supports operator safety and effective vapor capture.' },
-  { icon: <FlaskConical />, title: 'Chemical-resistant surfaces', desc: 'Durable interior finishes help withstand routine chemical exposure.' },
-  { icon: <ShieldAlert />, title: 'Tempered safety glass sash', desc: 'Impact-resistant glazing supports visibility and operator protection.' },
-  { icon: <Layout />, title: 'Ergonomic working opening', desc: 'Balanced sash movement and clear access support efficient daily use.' },
-  { icon: <Zap />, title: 'Integrated service utilities', desc: 'Built-in gas, water, and electrical connections are designed for lab workflows.' },
-  { icon: <Sun />, title: 'LED lighting', desc: 'Bright, uniform illumination improves visibility without excessive heat.' },
-  { icon: <Activity />, title: 'Audio/visual airflow alarms', desc: 'Operator alerts help identify low-flow conditions and airflow deviations.' },
-  { icon: <Cpu />, title: 'Multiple width options', desc: 'Available in a range of dimensions to suit different bench layouts and tasks.' },
-  { icon: <ShieldCheck />, title: 'Optional filtration', desc: 'A filtration upgrade can support additional capture and exhaust flexibility.' },
-  { icon: <Eye />, title: 'Easy maintenance access', desc: 'Service access is designed to simplify routine inspection and upkeep.' },
+  { icon: <Wind />, title: 'Reliable containment airflow', desc: 'Consistent face velocity for operator protection and reliable capture.' },
+  { icon: <ShieldAlert />, title: 'Tempered safety glass sash', desc: 'Impact-resistant sash with smooth counterbalance for safe access.' },
+  { icon: <FlaskConical />, title: 'Chemical-resistant surfaces', desc: 'Interior finishes resist routine chemical exposure and wear.' },
+  { icon: <Layout />, title: 'Ergonomic working opening', desc: 'Optimized sash travel and reach for comfortable daily use.' },
+  { icon: <Activity />, title: 'Audio / visual alarms', desc: 'Integrated alarms alert operators to low-flow or unsafe conditions.' },
+  { icon: <Zap />, title: 'Integrated service utilities', desc: 'Factory-ready service connections for gas, water, and power.' },
 ];
 
 const FeatureIcon = ({ icon }) => (
@@ -56,7 +52,7 @@ const FeaturesWithImages = () => {
           <p className="text-gray-400 font-light text-sm md:text-base">Designed to support safe operations, durable materials, and practical daily use in active laboratory environments.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featureList.map((f, i) => (
             <motion.div 
               key={i}

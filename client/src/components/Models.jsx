@@ -40,7 +40,8 @@ const Models = () => {
                   <div className="text-2xl font-black text-white">{model.id}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[10px] text-gray-500 uppercase tracking-widest italic group-hover:text-glow-cyan">Standard Build</div>
+                  <div className="text-sm font-semibold text-white">{model.width}</div>
+                  <div className="text-xs text-gray-400">{model.flow}</div>
                 </div>
               </button>
             ))}
@@ -83,9 +84,14 @@ const Models = () => {
                     <div className="text-4xl font-bold text-white">{activeModel.weight}</div>
                   </div>
                   <div className="flex items-end">
-                    <button className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white hover:bg-white/10 transition-colors uppercase tracking-widest">
-                      PDF Data Sheet
-                    </button>
+                    <div className="flex gap-3">
+                      <button className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white hover:bg-white/10 transition-colors uppercase tracking-widest">
+                        PDF Data Sheet
+                      </button>
+                      <button onClick={() => { localStorage.setItem('prefillModel', activeModel.id); const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }} className="px-6 py-3 rounded-xl bg-cyan-600 text-xs font-bold text-white hover:bg-cyan-500 transition-colors uppercase tracking-widest">
+                        Request this model
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>

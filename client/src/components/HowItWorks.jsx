@@ -5,7 +5,7 @@ import { useImagePreloader } from '../hooks/useImagePreloader';
 const FRAME_COUNT = 16; // recovered frames count
 const AIRFLOW_PATHS = Array.from({ length: FRAME_COUNT }, (_, i) => {
   const frameIndex = (i + 1).toString().padStart(4, '0');
-  return `/sequence/airflow/frames/recovered/${frameIndex}.png`;
+  return `/sequence/airflow/frames/${frameIndex}.png`;
 });
 
 const HowItWorks = () => {
@@ -88,7 +88,9 @@ const HowItWorks = () => {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-dark-800 shadow-2xl"
               >
-                <canvas ref={canvasRef} className="w-full h-full block" />
+                {/* Fallback static image while canvas animation initializes */}
+                <img src={AIRFLOW_PATHS[0]} alt="airflow frame" className="w-full h-full object-cover block" />
+                <canvas ref={canvasRef} className="w-full h-full block absolute inset-0" />
                 
                 {/* Premium Overlays */}
                 <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-tr from-glow-blue/10 via-transparent to-glow-purple/10"></div>

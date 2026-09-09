@@ -148,13 +148,24 @@ const HeroScrollAnimation = () => {
             </p>
             
             <div className="flex items-center gap-6">
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-7 py-3 bg-white text-slate-900 font-semibold rounded-lg transition-all pointer-events-auto shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
-              >
-                Request a Quote
-              </motion.button>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-4">
+                  <a href="#contact" className="inline-block">
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="px-7 py-3 bg-white text-slate-900 font-semibold rounded-lg transition-all pointer-events-auto shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                    >
+                      Request a Quote
+                    </motion.button>
+                  </a>
+                  <div className="flex items-center gap-4 mt-2 sm:mt-0">
+                    <div className="text-[10px] text-gray-300 font-medium">EN 14175</div>
+                    <div className="w-px h-5 bg-white/10"></div>
+                    <div className="text-[10px] text-gray-300 font-medium">1200–2100 mm</div>
+                    <div className="w-px h-5 bg-white/10"></div>
+                    <div className="text-[10px] text-gray-300 font-medium">20+ years</div>
+                  </div>
+                </div>
               <div className="md:flex flex-col hidden">
                 <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-1">Designed for</span>
                 <span className="text-sm text-gray-300 font-medium">Reliable airflow performance</span>

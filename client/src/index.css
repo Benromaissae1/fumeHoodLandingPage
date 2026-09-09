@@ -15,6 +15,12 @@
   }
 }
 
+/* Make anchor scrolling account for the fixed nav height */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* adjust if nav height changes */
+}
+
 @layer utilities {
   .glass-panel {
     @apply bg-white/[0.03] backdrop-blur-sm border border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.18)];
