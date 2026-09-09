@@ -84,11 +84,11 @@ const Models = () => {
                   </div>
                   <div className="flex items-end">
                     <div className="flex gap-3">
-                      <button className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white hover:bg-white/10 transition-colors uppercase tracking-widest">
-                        PDF Data Sheet
-                      </button>
-                      <button onClick={() => { localStorage.setItem('prefillModel', activeModel.id); const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }} className="px-6 py-3 rounded-xl bg-cyan-600 text-xs font-bold text-white hover:bg-cyan-500 transition-colors uppercase tracking-widest">
+                      <button onClick={() => { localStorage.setItem('prefillModel', activeModel.id); const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-3 rounded-2xl bg-cyan-500 shadow-[0_12px_30px_rgba(6,182,212,0.12)] text-sm font-extrabold text-white hover:bg-cyan-400 transition-colors uppercase tracking-widest">
                         Request this model
+                      </button>
+                      <button aria-disabled="true" disabled className="px-6 py-3 rounded-xl border border-white/10 text-xs font-bold text-white/40 bg-transparent cursor-not-allowed opacity-60 transition-colors uppercase tracking-widest">
+                        PDF Data Sheet (Coming soon)
                       </button>
                     </div>
                   </div>

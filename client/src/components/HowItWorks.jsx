@@ -18,10 +18,11 @@ const HowItWorks = () => {
     offset: ["start start", "end end"]
   });
 
+  // Tuned for slightly snappier response while remaining smooth
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 70, // Lower stiffness for smoother transitions
-    damping: 35,   // Higher damping to prevent oscillation
-    restDelta: 0.001
+    stiffness: 140,
+    damping: 25,
+    restDelta: 0.002
   });
 
   // Map scroll progress to frame index (0-19)
@@ -76,6 +77,8 @@ const HowItWorks = () => {
 
   return (
     <section ref={containerRef} className="relative h-[200vh] bg-dark-900">
+      {/* Anchor target placed before the sticky container so `/#howitworks` reliably lands here */}
+      <div id="howitworks" className="w-full h-0 scroll-mt-[96px]" />
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-24">

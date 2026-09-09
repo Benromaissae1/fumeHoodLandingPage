@@ -55,6 +55,9 @@ const CTA = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5 text-left max-w-3xl mx-auto">
+            <div className="md:col-span-2">
+              <h4 className="text-[10px] text-glow-cyan tracking-[0.25em] uppercase mb-3">Contact details</h4>
+            </div>
             <div className="space-y-3">
               <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Full Name</label>
               <input 
@@ -108,6 +111,10 @@ const CTA = () => {
                 onChange={e => setForm({...form, location: e.target.value})}
                 className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
               />
+            </div>
+
+            <div className="md:col-span-2">
+              <h4 className="text-[10px] text-glow-cyan tracking-[0.25em] uppercase mb-3">Project details</h4>
             </div>
 
             <div className="space-y-3">
@@ -165,6 +172,7 @@ const CTA = () => {
                 {status.loading ? 'Submitting...' : status.success ? 'Request Received' : 'Request a Quote'}
               </motion.button>
             </div>
+            <p className="md:col-span-2 mt-3 text-xs text-gray-400 text-center">We only use your details to respond to your project request.</p>
           </form>
 
           {status.error && <p className="mt-8 text-red-500 font-bold uppercase tracking-widest text-[10px]">{status.error}</p>}

@@ -18,15 +18,36 @@ const HeroScrollAnimation = () => {
     offset: ["start start", "end end"]
   });
 
-  // Smooth scroll mapping
+  // Smooth scroll mapping — tuned for slightly faster responsiveness
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
+    stiffness: 200,
+    damping: 22,
+    restDelta: 0.002
   });
 
-  // Map scroll to frame index
-  const currentFrame = useTransform(smoothProgress, [0, 1], [0, FRAME_COUNT - 1]);
+  // Map scroll to frame index with a nonlinear easing:
+  // - First 40% of scroll progresses slowly through the first ~20% of frames
+  // - Remaining scroll advances through the rest of the frames faster
+  // Keep an eased feeling but shorten the slow opening so it progresses faster overall
+  const initialPortion = 0.3; // first 30% of scroll (shorter slow phase)
+  const initialFrames = Math.round((FRAME_COUNT - 1) * 0.2); // still reserve ~20% of frames for the gentle opening
+
+  const currentFrame = useTransform(smoothProgress, (v) => {
+    // ease function (smoothstep-like)
+    const smoothEase = (t) => t * t * (3 - 2 * t);
+
+    if (v <= initialPortion) {
+      const t = v / initialPortion;
+      const eased = smoothEase(t);
+      return eased * initialFrames;
+    }
+
+    // remaining portion
+    const t = (v - initialPortion) / (1 - initialPortion);
+    const eased = smoothEase(t);
+    const remainingFrames = (FRAME_COUNT - 1) - initialFrames;
+    return initialFrames + eased * remainingFrames;
+  });
   
   // Cinematic zoom effect: slight scale up as user scrolls
   const scale = useTransform(smoothProgress, [0, 1], [1, 1.2]);

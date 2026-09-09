@@ -87,7 +87,7 @@ function App() {
           <FeaturesWithImages />
         </section>
         
-        <section id="howitworks" className="custom-cursor-zone border-t border-white/5 bg-[#101821] scroll-mt-[96px]">
+        <section className="custom-cursor-zone border-t border-white/5 bg-[#101821] scroll-mt-[96px]">
           <HowItWorks />
         </section>
         
@@ -141,9 +141,9 @@ function App() {
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between gap-4 text-[10px] text-gray-600 uppercase tracking-[0.2em]">
             <p>© {new Date().getFullYear()} ARIAS LABS. All rights reserved.</p>
             <div className="flex gap-8">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Security</a>
+              <a href="#specs" className="hover:text-white transition-colors">Product documentation</a>
+              <a href="#contact" className="hover:text-white transition-colors">Contact engineering</a>
+              <a href="#contact" className="hover:text-white transition-colors">Request quote</a>
             </div>
           </div>
         </div>
