@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useImagePreloader } from '../hooks/useImagePreloader';
 
-const FRAME_COUNT = 20;
+const FRAME_COUNT = 16; // recovered frames count
 const AIRFLOW_PATHS = Array.from({ length: FRAME_COUNT }, (_, i) => {
   const frameIndex = (i + 1).toString().padStart(4, '0');
-  return `/sequence/airflow/${frameIndex}.png`;
+  return `/sequence/airflow/frames/recovered/${frameIndex}.png`;
 });
 
 const HowItWorks = () => {
@@ -35,23 +35,31 @@ const HowItWorks = () => {
 
     // Responsive canvas sizing
     const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * window.devicePixelRatio;
-    canvas.height = rect.height * window.devicePixelRatio;
+    // set backing size and reset transforms to avoid cumulative scaling
+    canvas.width = Math.round(rect.width * window.devicePixelRatio);
+    canvas.height = Math.round(rect.height * window.devicePixelRatio);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
     const hRatio = rect.width / image.width;
     const vRatio = rect.height / image.height;
     const ratio = Math.max(hRatio, vRatio); // Cover effect
-    
+
     const centerShift_x = (rect.width - image.width * ratio) / 2;
     const centerShift_y = (rect.height - image.height * ratio) / 2;
 
-    ctx.clearRect(0, 0, rect.width, rect.height);
-    ctx.drawImage(
-      image, 
-      0, 0, image.width, image.height,
-      centerShift_x, centerShift_y, image.width * ratio, image.height * ratio
-    );
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    try {
+      ctx.drawImage(
+        image,
+        0, 0, image.width, image.height,
+        centerShift_x, centerShift_y, image.width * ratio, image.height * ratio
+      );
+    } catch (err) {
+      console.error('drawImage failed', err, { index, imageWidth: image.width, imageHeight: image.height, rect });
+    }
+    // debug
+    // console.log('drawFrame', index, {rectWidth: rect.width, rectHeight: rect.height, imgW: image.width, imgH: image.height});
   };
 
   useEffect(() => {

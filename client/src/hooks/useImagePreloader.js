@@ -29,6 +29,18 @@ export const useImagePreloader = (paths) => {
           setImages(imgObjects);
         }
       };
+      img.onerror = (err) => {
+        if (isCancelled) return;
+        // Log but continue so a single missing image doesn't block the sequence
+        // Keep a placeholder Image object (may be broken) so indices remain consistent
+        console.warn(`Image failed to load: ${path}`, err);
+        loadedCount++;
+        setProgress((loadedCount / frameCount) * 100);
+        if (loadedCount === frameCount) {
+          setLoaded(true);
+          setImages(imgObjects);
+        }
+      };
       imgObjects[index] = img;
     });
 
