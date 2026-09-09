@@ -117,7 +117,7 @@ const HeroScrollAnimation = () => {
           </div>
         )}
 
-        <motion.div style={{ scale, opacity }} className="relative z-0 w-full h-full flex items-center justify-center">
+        <motion.div style={{ scale, opacity, filter: 'brightness(1.06) contrast(1.06)' }} className="relative z-0 w-full h-full flex items-center justify-center">
           <canvas ref={canvasRef} className="object-contain" />
         </motion.div>
 
@@ -127,7 +127,7 @@ const HeroScrollAnimation = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-xl lg:max-w-lg"
+            className="w-full md:max-w-[520px]"
           >
             <motion.span 
               initial={{ opacity: 0 }}
@@ -143,12 +143,15 @@ const HeroScrollAnimation = () => {
                 Fume Hoods
               </span>
             </h1>
-            <p className="text-gray-400 text-base md:text-lg font-light max-w-md mb-8 leading-relaxed">
+            <p className="w-full text-gray-400 text-base md:text-lg font-light md:max-w-[420px] mb-6 leading-relaxed break-words whitespace-normal">
               Safe, ergonomic, and adaptable fume extraction systems for modern laboratories.
             </p>
+
+            {/* Credibility sentence */}
+            <p className="w-full text-gray-300 text-sm mb-4 md:max-w-[420px] break-words whitespace-normal">Manufactured in Spain for safe, compliant laboratory ventilation.</p>
             
-            <div className="flex items-center gap-6">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-4">
+              <div className="flex items-center gap-6">
+                <div className="flex flex-col items-start gap-4 pointer-events-auto">
                   <a href="#contact" className="inline-block">
                     <motion.button 
                       whileHover={{ scale: 1.02 }}
@@ -158,19 +161,15 @@ const HeroScrollAnimation = () => {
                       Request a Quote
                     </motion.button>
                   </a>
-                  <div className="flex items-center gap-4 mt-2 sm:mt-0">
-                    <div className="text-[10px] text-gray-300 font-medium">EN 14175</div>
-                    <div className="w-px h-5 bg-white/10"></div>
-                    <div className="text-[10px] text-gray-300 font-medium">1200–2100 mm</div>
-                    <div className="w-px h-5 bg-white/10"></div>
-                    <div className="text-[10px] text-gray-300 font-medium">20+ years</div>
+
+                  {/* Proof points row - compact badges */}
+                  <div className="flex flex-wrap items-center gap-3 mt-2">
+                    <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">EN 14175</span>
+                    <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">1200–2100 mm widths</span>
+                    <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">10+ years experience</span>
                   </div>
                 </div>
-              <div className="md:flex flex-col hidden">
-                <span className="text-[9px] text-gray-500 tracking-[0.2em] uppercase mb-1">Designed for</span>
-                <span className="text-sm text-gray-300 font-medium">Reliable airflow performance</span>
               </div>
-            </div>
           </motion.div>
         </div>
 

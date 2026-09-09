@@ -6,12 +6,12 @@ import {
 } from 'lucide-react';
 
 const featureList = [
-  { icon: <Wind />, title: 'Reliable containment airflow', desc: 'Consistent face velocity for operator protection and reliable capture.' },
-  { icon: <ShieldAlert />, title: 'Tempered safety glass sash', desc: 'Impact-resistant sash with smooth counterbalance for safe access.' },
-  { icon: <FlaskConical />, title: 'Chemical-resistant surfaces', desc: 'Interior finishes resist routine chemical exposure and wear.' },
-  { icon: <Layout />, title: 'Ergonomic working opening', desc: 'Optimized sash travel and reach for comfortable daily use.' },
-  { icon: <Activity />, title: 'Audio / visual alarms', desc: 'Integrated alarms alert operators to low-flow or unsafe conditions.' },
-  { icon: <Zap />, title: 'Integrated service utilities', desc: 'Factory-ready service connections for gas, water, and power.' },
+  { icon: <Wind />, title: 'Stable face velocity', tag: 'Operator protection', desc: 'Consistent face velocity for operator protection and reliable capture.' },
+  { icon: <ShieldAlert />, title: 'Tempered safety glass sash', tag: 'Safety visibility', desc: 'Impact-resistant sash with smooth counterbalance for safe access.' },
+  { icon: <FlaskConical />, title: 'Chemical-resistant surfaces', tag: 'Chemical durability', desc: 'Interior finishes resist routine chemical exposure and wear.' },
+  { icon: <Layout />, title: 'Ergonomic working opening', tag: 'Daily ergonomics', desc: 'Optimized sash travel and reach for comfortable daily use.' },
+  { icon: <Activity />, title: 'Airflow alarm system', tag: 'Low-flow warning', desc: 'Integrated alarms alert operators to low-flow or unsafe conditions.' },
+  { icon: <Zap />, title: 'Integrated service utilities', tag: 'Service ready', desc: 'Factory-ready service connections for gas, water, and power.' },
 ];
 
 const FeatureIcon = ({ icon }) => (
@@ -63,10 +63,13 @@ const FeaturesWithImages = () => {
               className="group"
             >
               <FeatureIcon icon={f.icon} />
-              <div className="px-1">
-                 <h4 className="text-base font-semibold text-white group-hover:text-cyan-300 transition-colors mb-2 leading-snug">{f.title}</h4>
-                 <p className="text-gray-500 text-xs leading-relaxed font-light">{f.desc}</p>
-              </div>
+                <div className="px-1">
+                  <h4 className="text-base font-semibold text-white group-hover:text-cyan-300 transition-colors mb-2 leading-snug">{f.title}</h4>
+                  {f.tag && (
+                   <span className="inline-block text-[10px] text-gray-200 bg-white/6 px-2 py-0.5 rounded-sm uppercase tracking-wider font-medium mb-2">{f.tag}</span>
+                  )}
+                  <p className="text-gray-500 text-xs leading-relaxed font-light">{f.desc}</p>
+                </div>
             </motion.div>
           ))}
         </div>

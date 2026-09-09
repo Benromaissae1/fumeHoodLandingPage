@@ -9,6 +9,7 @@ import CustomCursor from './components/CustomCursor';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -32,38 +33,65 @@ function App() {
           <div className="flex items-center gap-4">
             <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain" />
           </div>
-          <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hidden lg:flex">
-            <a href="#showcase" className="hover:text-white transition-colors">Overview</a>
-            <a href="#specs" className="hover:text-white transition-colors">Specs</a>
-            <a href="#features" className="hover:text-white transition-colors">Safety</a>
-            <a href="#howitworks" className="hover:text-white transition-colors">Airflow</a>
-            <a href="#models" className="hover:text-white transition-colors">Models</a>
+
+          {/* Desktop links */}
+          <div className="hidden lg:flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+            <a href="#showcase" className="px-2 py-2 hover:text-white transition-colors">Overview</a>
+            <a href="#specs" className="px-2 py-2 hover:text-white transition-colors">Specs</a>
+            <a href="#features" className="px-2 py-2 hover:text-white transition-colors">Safety</a>
+            <a href="#howitworks" className="px-2 py-2 hover:text-white transition-colors">Airflow</a>
+            <a href="#models" className="px-2 py-2 hover:text-white transition-colors">Models</a>
           </div>
-          <a href="#contact" className="px-6 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95">
-            Request Quote
-          </a>
+
+          {/* Right actions: Request Quote + mobile menu button */}
+          <div className="flex items-center gap-3">
+            <a href="#contact" className="px-5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95">
+              Request Quote
+            </a>
+
+            <button
+              aria-label="Menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(v => !v)}
+              className="lg:hidden p-2 rounded-md bg-white/5 hover:bg-white/10 text-white"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12h18M3 6h18M3 18h18" /></svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu panel */}
+        <div className={`${menuOpen ? 'block' : 'hidden'} lg:hidden bg-[#0a0f14]/95 border-t border-white/5`}>
+          <div className="px-6 py-4 pb-6 flex flex-col gap-3">
+            <a onClick={() => setMenuOpen(false)} href="#showcase" className="text-white font-semibold">Overview</a>
+            <a onClick={() => setMenuOpen(false)} href="#specs" className="text-white font-semibold">Specs</a>
+            <a onClick={() => setMenuOpen(false)} href="#features" className="text-white font-semibold">Safety</a>
+            <a onClick={() => setMenuOpen(false)} href="#howitworks" className="text-white font-semibold">Airflow</a>
+            <a onClick={() => setMenuOpen(false)} href="#models" className="text-white font-semibold">Models</a>
+            <a onClick={() => setMenuOpen(false)} href="#contact" className="text-white font-semibold">Quote</a>
+          </div>
         </div>
       </nav>
 
       {/* Main Experience */}
       <main>
-        <section id="showcase" className="border-b border-white/5 bg-[#0b1016]">
+        <section id="showcase" className="border-b border-white/5 bg-[#0b1016] scroll-mt-[96px]">
           <HeroScrollAnimation />
         </section>
         
-        <section id="specs" className="custom-cursor-zone border-t border-white/5 bg-[#0d131a]">
+        <section id="specs" className="custom-cursor-zone border-t border-white/5 bg-[#0d131a] scroll-mt-[96px]">
           <Specifications />
         </section>
 
-        <section id="features" className="border-t border-white/5 bg-[#0b1016]">
+        <section id="features" className="border-t border-white/5 bg-[#0b1016] scroll-mt-[96px]">
           <FeaturesWithImages />
         </section>
         
-        <section id="howitworks" className="custom-cursor-zone border-t border-white/5 bg-[#101821]">
+        <section id="howitworks" className="custom-cursor-zone border-t border-white/5 bg-[#101821] scroll-mt-[96px]">
           <HowItWorks />
         </section>
         
-        <section id="models" className="border-t border-white/5 bg-[#0c1219]">
+        <section id="models" className="border-t border-white/5 bg-[#0c1219] scroll-mt-[96px]">
           <Models />
         </section>
         
@@ -80,7 +108,7 @@ function App() {
               <div className="flex items-center gap-3 mb-6">
                 <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-gray-500 text-sm font-light">Spanish laboratory furniture and fume hood manufacturer with more than 20 years of experience.</p>
+              <p className="text-gray-500 text-sm font-light">Spanish laboratory furniture and fume hood manufacturer with more than 10 years of experience.</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">
               <div className="space-y-4">

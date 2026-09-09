@@ -35,7 +35,7 @@ const CTA = () => {
   }, []);
 
   return (
-    <section id="contact" className="py-40 bg-dark-900 relative overflow-hidden">
+    <section id="contact" className="py-40 bg-dark-900 relative overflow-hidden scroll-mt-[96px]">
       {/* Background treatment */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-sky-500/5 blur-[100px] rounded-full pointer-events-none"></div>
       

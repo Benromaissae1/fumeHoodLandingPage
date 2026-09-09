@@ -79,59 +79,60 @@ const HowItWorks = () => {
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-24">
-            
+
             {/* Left: Animation Canvas */}
             <div className="flex-1 w-full relative group">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="relative aspect-square rounded-[2rem] overflow-hidden border border-white/10 bg-dark-800 shadow-2xl"
               >
-                {/* Fallback static image while canvas animation initializes */}
-                <img src={AIRFLOW_PATHS[0]} alt="airflow frame" className="w-full h-full object-cover block" />
-                <canvas ref={canvasRef} className="w-full h-full block absolute inset-0" />
-                
-                {/* Premium Overlays */}
-                <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-tr from-glow-blue/10 via-transparent to-glow-purple/10"></div>
-                <div className="absolute inset-0 pointer-events-none z-10 shadow-[inset_0_0_100px_rgba(0,0,0,0.6)]"></div>
-                
-                {/* Subtle Scanline Effect */}
-                <div className="absolute inset-0 pointer-events-none z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-20"></div>
+                <img src={AIRFLOW_PATHS[0]} alt="airflow frame" className="w-full h-full object-cover block" style={{ filter: 'brightness(1.08)' }} />
+                <canvas ref={canvasRef} className="w-full h-full block absolute inset-0" style={{ filter: 'brightness(1.06)' }} />
+
+                {/* Overlays (reduced) */}
+                <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-tr from-glow-blue/6 via-transparent to-glow-purple/6 opacity-80"></div>
+                <div className="absolute inset-0 pointer-events-none z-10 shadow-[inset_0_0_80px_rgba(0,0,0,0.35)]"></div>
+                <div className="absolute inset-0 pointer-events-none z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.12)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_6px,2px_100%] opacity-10"></div>
               </motion.div>
-              
-              {/* Background Glow */}
+
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-glow-blue/20 blur-[80px] rounded-full -z-10"></div>
             </div>
 
-          <div className="flex-1 space-y-12">
-            <div>
-              <h2 className="text-glow-purple text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Airflow Protection</h2>
-              <h3 className="text-4xl md:text-6xl font-black text-white mb-8">How Airflow Protects The Operator</h3>
-            </div>
-
-            <div className="space-y-10">
-              <div className="group">
-                <div className="text-glow-cyan font-mono text-xs mb-2">/ CAPTURE</div>
-                <h4 className="text-xl font-bold text-white mb-2">Capture</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">Air is drawn through the front opening to contain vapors and maintain a protective working zone.</p>
-                <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
-              </div>
-              
-              <div className="group">
-                <div className="text-glow-purple font-mono text-xs mb-2">/ CONTAIN</div>
-                <h4 className="text-xl font-bold text-white mb-2">Contain</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">Internal airflow guides fumes away from the operator and toward the exhaust path.</p>
-                <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
+            {/* Right: Text */}
+            <div className="flex-1 space-y-12">
+              <div>
+                <h2 className="text-glow-purple text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Airflow Protection</h2>
+                <h3 className="text-4xl md:text-6xl font-black text-white mb-8">How Airflow Protects The Operator</h3>
               </div>
 
-              <div className="group">
-                <div className="text-glow-blue font-mono text-xs mb-2">/ EXHAUST</div>
-                <h4 className="text-xl font-bold text-white mb-2">Exhaust</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">Contaminated air is directed to the exhaust or filtration system for safe removal from the workspace.</p>
+              <div className="space-y-10">
+                <div className="group">
+                  <div className="text-glow-cyan font-mono text-xs mb-2">01 Capture</div>
+                  <h4 className="text-xl font-bold text-white mb-2">Capture</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">Air is drawn through the front opening to contain vapors and maintain a protective working zone.</p>
+                  <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
+                </div>
+
+                <div className="group">
+                  <div className="text-glow-purple font-mono text-xs mb-2">02 Contain</div>
+                  <h4 className="text-xl font-bold text-white mb-2">Contain</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">Internal airflow guides fumes away from the operator and toward the exhaust path.</p>
+                  <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
+                </div>
+
+                <div className="group">
+                  <div className="text-glow-blue font-mono text-xs mb-2">03 Exhaust</div>
+                  <h4 className="text-xl font-bold text-white mb-2">Exhaust</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">Contaminated air is directed to the exhaust or filtration system for safe removal from the workspace.</p>
+                </div>
+
+                <div className="pt-4">
+                  <p className="text-gray-500 text-xs">Actual airflow configuration depends on installation, ducting, and selected model.</p>
+                </div>
               </div>
             </div>
-          </div>
 
           </div>
         </div>
