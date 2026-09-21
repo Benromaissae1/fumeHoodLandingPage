@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const tierRows = [
@@ -12,6 +12,37 @@ const tierRows = [
   ['Make-up air', '—', '—', 'Optional', 'Standard, airfoil + column'],
   ['Automatic sash', '—', '—', 'Optional', 'Optional'],
   ['Finish', 'Matte white', 'Matte white', 'Matte white', 'Metallic powder white'],
+];
+
+const tierDetails = [
+  {
+    id: 'core',
+    name: 'ARIAS Core',
+    label: 'Entry tier',
+    description: 'Entry-tier containment for educational laboratories, training centres and basic chemical applications.',
+    adds: 'Base configuration for the ARIAS range.',
+  },
+  {
+    id: 'vision',
+    name: 'ARIAS Vision',
+    label: 'Enhanced',
+    description: 'Everything in Core, plus a reinforced sash structure, improved airfoil and cabinet ventilation.',
+    adds: 'A reinforced sash structure, improved airfoil and cabinet ventilation.',
+  },
+  {
+    id: 'pro',
+    name: 'ARIAS Pro',
+    label: 'Integrated',
+    description: 'Everything in Vision, plus an integrated monobloque structure and standard safety systems.',
+    adds: 'An integrated monobloque structure and standard safety systems.',
+  },
+  {
+    id: 'prime',
+    name: 'ARIAS Prime',
+    label: 'Premium',
+    description: 'Everything in Pro, plus laminated glazing, premium coatings and standard make-up air.',
+    adds: 'Laminated glazing, premium coatings and standard make-up air.',
+  },
 ];
 
 const benchTopAirflow = [
@@ -64,6 +95,77 @@ const DataTable = ({ headers, rows, highlightedColumns = [] }) => (
   </div>
 );
 
+const TierComparison = () => {
+  const [activeTier, setActiveTier] = useState(0);
+  const tier = tierDetails[activeTier];
+
+  return (
+    <div className="border border-white/10 bg-[#0b1219]">
+      <div className="flex items-center justify-between gap-6 border-b border-white/10 px-4 py-4 md:px-6">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.28em] text-cyan-300">Select a tier</div>
+          <div className="mt-1 text-xs text-gray-500">Compare the defining upgrade at each stage.</div>
+        </div>
+        <div className="hidden text-[10px] uppercase tracking-[0.2em] text-gray-600 sm:block">{String(activeTier + 1).padStart(2, '0')} / 04</div>
+      </div>
+
+      <div className="overflow-x-auto border-b border-white/10">
+        <div className="flex min-w-max p-2" role="tablist" aria-label="ARIAS product tiers">
+          {tierDetails.map((item, index) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              aria-selected={activeTier === index}
+              onClick={() => setActiveTier(index)}
+              className={`min-w-[128px] border px-4 py-3 text-left transition-colors md:min-w-[160px] ${activeTier === index ? 'border-cyan-300/70 bg-cyan-300/[0.08] text-white' : 'border-transparent text-gray-500 hover:border-white/15 hover:text-gray-200'}`}
+            >
+              <span className="block text-[10px] uppercase tracking-[0.18em]">{item.label}</span>
+              <span className="mt-1 block text-sm font-semibold">{item.name.replace('ARIAS ', '')}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid min-w-0 gap-8 p-5 md:grid-cols-[minmax(220px,0.8fr)_minmax(0,1.6fr)] md:p-7">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.25em] text-cyan-300">{tier.label}</div>
+          <h4 className="mt-2 text-2xl font-black text-white md:text-3xl">{tier.name}</h4>
+          <p className="mt-3 text-sm leading-relaxed text-gray-400">{tier.description}</p>
+          <div className="mt-6 border-l-2 border-cyan-300/70 bg-cyan-300/[0.05] px-4 py-3">
+            <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-200">What this tier adds</div>
+            <p className="mt-2 text-sm leading-relaxed text-gray-200">{tier.adds}</p>
+          </div>
+        </div>
+
+        <div>
+          <div className="grid grid-cols-4 border border-white/10 bg-[#0a1016]" aria-label="Tier progression">
+            {tierDetails.map((item, index) => (
+              <button key={item.id} type="button" onClick={() => setActiveTier(index)} className={`border-r border-white/10 px-2 py-3 text-center text-[10px] uppercase tracking-[0.16em] last:border-r-0 ${activeTier === index ? 'text-cyan-200' : 'text-gray-600'}`}>
+                <span className={`mx-auto mb-2 block h-2 w-2 border ${activeTier === index ? 'border-cyan-300 bg-cyan-300' : 'border-gray-600'}`}></span>
+                {item.name.replace('ARIAS ', '')}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-6 min-w-0 border border-white/10">
+            <div className="grid grid-cols-[minmax(150px,0.8fr)_minmax(0,1fr)] border-b border-white/10 bg-white/[0.03] px-4 py-3 text-[10px] uppercase tracking-[0.2em]">
+              <span className="min-w-0 text-gray-500">Specification</span>
+              <span className="min-w-0 break-words text-right text-cyan-200">{tier.name}</span>
+            </div>
+            {tierRows.map((row) => (
+              <div key={row[0]} className="grid grid-cols-[minmax(150px,0.8fr)_minmax(0,1fr)] gap-4 border-b border-white/[0.06] px-4 py-3 last:border-b-0">
+                <span className="min-w-0 text-xs leading-relaxed text-gray-500">{row[0]}</span>
+                <span className="min-w-0 break-words text-right text-sm leading-relaxed text-gray-100">{row[activeTier + 1]}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Specifications = () => {
   return (
     <section className="py-16 bg-dark-900 relative overflow-hidden">
@@ -77,8 +179,8 @@ const Specifications = () => {
         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-glow-cyan text-[10px] tracking-[0.5em] uppercase mb-2 font-bold">Technical Overview</h2>
           <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-2">Tier comparison</h3>
-          <p className="text-sm text-gray-300 mb-8">Each column includes everything from the tier before it. The highlighted column shows the premium configuration.</p>
-          <DataTable headers={['Feature', 'Core', 'Vision', 'Pro', 'Prime']} rows={tierRows} highlightedColumns={[4]} />
+          <p className="text-sm text-gray-300 mb-8">Explore each performance tier individually. Every tier includes the configuration before it, plus its defining upgrades.</p>
+          <TierComparison />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
             <div className="rounded-xl border border-white/10 p-6 bg-white/[0.02]">
