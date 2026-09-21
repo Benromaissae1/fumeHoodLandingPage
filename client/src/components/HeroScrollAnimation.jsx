@@ -159,17 +159,17 @@ const HeroScrollAnimation = () => {
               Laboratory Fume Extraction Systems
             </motion.span>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[0.9] mb-6">
-              ARIAS <br />
+              Configurable <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-white to-slate-400">
-                Fume Hoods
+                containment
               </span>
+              <br /> for your laboratory.
             </h1>
             <p className="w-full text-gray-400 text-base md:text-lg font-light md:max-w-[420px] mb-6 leading-relaxed break-words whitespace-normal">
-              Safe, ergonomic, and adaptable fume extraction systems for modern laboratories.
+              ARIAS offers a configurable fume hood range across four performance tiers, plus specialised chemical-resistant and walk-in formats.
             </p>
 
-            {/* Credibility sentence */}
-            <p className="w-full text-gray-300 text-sm mb-4 md:max-w-[420px] break-words whitespace-normal">Manufactured in Spain for safe, compliant laboratory ventilation.</p>
+            <p className="w-full text-gray-300 text-sm mb-4 md:max-w-[420px] break-words whitespace-normal">Choose the ARIAS family, working width, interior materials and airflow equipment that match your application.</p>
             
               <div className="flex items-center gap-6">
                 <div className="flex flex-col items-start gap-4 pointer-events-auto">
@@ -186,8 +186,9 @@ const HeroScrollAnimation = () => {
                   {/* Proof points row - compact badges */}
                   <div className="flex flex-wrap items-center gap-3 mt-2">
                     <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">EN 14175</span>
+                    <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">ASHRAE 110</span>
                     <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">1200–2100 mm widths</span>
-                    <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">10+ years experience</span>
+                    <span className="text-[10px] text-gray-300 bg-white/3 px-3 py-1 rounded-full uppercase tracking-widest">4 tiers + 2 formats</span>
                   </div>
                 </div>
               </div>

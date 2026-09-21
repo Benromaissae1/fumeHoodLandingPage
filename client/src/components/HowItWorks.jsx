@@ -106,33 +106,33 @@ const HowItWorks = () => {
             {/* Right: Text */}
             <div className="flex-1 space-y-12">
               <div>
-                <h2 className="text-glow-purple text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Airflow Protection</h2>
-                <h3 className="text-4xl md:text-6xl font-black text-white mb-8">How Airflow Protects The Operator</h3>
+                <h2 className="text-glow-purple text-[10px] tracking-[0.5em] uppercase mb-4 font-bold">Airflow Performance</h2>
+                <h3 className="text-4xl md:text-6xl font-black text-white mb-8">Capture. Contain. Exhaust.</h3>
               </div>
 
               <div className="space-y-10">
                 <div className="group">
                   <div className="text-glow-cyan font-mono text-xs mb-2">01 Capture</div>
                   <h4 className="text-xl font-bold text-white mb-2">Capture</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">Air is drawn through the front opening to contain vapors and maintain a protective working zone.</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">Air enters through the working opening at a controlled face velocity to secure the working zone.</p>
                   <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
                 </div>
 
                 <div className="group">
                   <div className="text-glow-purple font-mono text-xs mb-2">02 Contain</div>
                   <h4 className="text-xl font-bold text-white mb-2">Contain</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">Internal airflow guides fumes away from the operator and toward the exhaust path.</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">Internal baffles and liner choices are matched to the selected ARIAS tier.</p>
                   <div className="w-px h-0 bg-white/20 ml-2 group-hover:h-8 transition-all duration-300"></div>
                 </div>
 
                 <div className="group">
                   <div className="text-glow-blue font-mono text-xs mb-2">03 Exhaust</div>
                   <h4 className="text-xl font-bold text-white mb-2">Exhaust</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">Contaminated air is directed to the exhaust or filtration system for safe removal from the workspace.</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">CAV, VAV, butterfly or Venturi equipment routes contaminated air out of the workspace.</p>
                 </div>
 
                 <div className="pt-4">
-                  <p className="text-gray-500 text-xs">Actual airflow configuration depends on installation, ducting, and selected model.</p>
+                  <p className="text-cyan-200 text-sm font-mono border border-white/10 bg-white/[0.03] rounded-lg px-4 py-3">Airflow = Face velocity × Sash width × Sash opening height</p>
                 </div>
               </div>
             </div>

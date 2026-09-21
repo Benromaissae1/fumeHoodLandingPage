@@ -6,12 +6,13 @@ import {
 } from 'lucide-react';
 
 const featureList = [
-  { icon: <Wind />, title: 'Stable face velocity', tag: 'Operator protection', desc: 'Consistent face velocity for operator protection and reliable capture.' },
-  { icon: <ShieldAlert />, title: 'Tempered safety glass sash', tag: 'Safety visibility', desc: 'Impact-resistant sash with smooth counterbalance for safe access.' },
-  { icon: <FlaskConical />, title: 'Chemical-resistant surfaces', tag: 'Chemical durability', desc: 'Interior finishes resist routine chemical exposure and wear.' },
-  { icon: <Layout />, title: 'Ergonomic working opening', tag: 'Daily ergonomics', desc: 'Optimized sash travel and reach for comfortable daily use.' },
-  { icon: <Activity />, title: 'Airflow alarm system', tag: 'Low-flow warning', desc: 'Integrated alarms alert operators to low-flow or unsafe conditions.' },
-  { icon: <Zap />, title: 'Integrated service utilities', tag: 'Service ready', desc: 'Factory-ready service connections for gas, water, and power.' },
+  { icon: <Layout />, title: 'ARIAS Core', tag: 'Entry tier', desc: 'Entry-tier containment for educational laboratories, training centres and basic chemical applications.' },
+  { icon: <Eye />, title: 'ARIAS Vision', tag: 'Enhanced', desc: 'Everything in Core, plus a reinforced sash structure, improved airfoil and cabinet ventilation.' },
+  { icon: <ShieldCheck />, title: 'ARIAS Pro', tag: 'Integrated', desc: 'Everything in Vision, plus an integrated monobloque structure and standard safety systems.' },
+  { icon: <Sun />, title: 'ARIAS Prime', tag: 'Premium', desc: 'Everything in Pro, plus laminated glazing, premium coatings and standard make-up air.' },
+  { icon: <FlaskConical />, title: 'ARIAS Chem', tag: 'Specialised', desc: 'A dedicated chemical-resistant line built for aggressive acids and corrosive vapours, with PP/PVC construction throughout.' },
+  { icon: <Wind />, title: 'ARIAS Walk-in', tag: 'Large format', desc: 'A large-format platform for bulky equipment, reactors and pilot-scale work, available in general-purpose construction.' },
+  { icon: <ShieldAlert />, title: 'ARIAS Walk-in Chem', tag: 'Full PP', desc: 'A large-format platform for corrosive processes and acid-resistant applications, with full-PP construction.' },
 ];
 
 const FeatureIcon = ({ icon }) => (
@@ -47,9 +48,9 @@ const FeaturesWithImages = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-cyan-300 text-[10px] tracking-[0.35em] uppercase mb-4 font-bold">Safety Features</h2>
-          <h3 className="text-3xl md:text-5xl font-black text-white mb-5">Built for reliable laboratory performance</h3>
-          <p className="text-gray-400 font-light text-sm md:text-base">Designed to support safe operations, durable materials, and practical daily use in active laboratory environments.</p>
+          <h2 className="text-cyan-300 text-[10px] tracking-[0.35em] uppercase mb-4 font-bold">ARIAS Product Families</h2>
+          <h3 className="text-3xl md:text-5xl font-black text-white mb-5">Four tiers. Two specialised formats.</h3>
+          <p className="text-gray-400 font-light text-sm md:text-base">Each tier includes everything from the tier before it, while Chem and Walk-in formats cover specialised applications.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

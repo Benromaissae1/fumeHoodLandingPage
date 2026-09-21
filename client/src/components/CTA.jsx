@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { submitContact } from '../api';
-import { useEffect } from 'react';
 
 const CTA = () => {
-  const [form, setForm] = useState({ name: '', email: '', company: '', phone: '', location: '', model: '', quantity: '1', timeline: '', message: '' });
+  const [form, setForm] = useState(() => {
+    const initialForm = { name: '', email: '', tier: 'ARIAS Core', width: '1200 mm', message: '' };
+    try {
+      const prefillTier = localStorage.getItem('prefillTier');
+      const prefillWidth = localStorage.getItem('prefillWidth');
+      localStorage.removeItem('prefillTier');
+      localStorage.removeItem('prefillWidth');
+      return { ...initialForm, tier: prefillTier || initialForm.tier, width: prefillWidth || initialForm.width };
+    } catch {
+      return initialForm;
+    }
+  });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
 
   const handleSubmit = async (e) => {
@@ -15,24 +25,12 @@ const CTA = () => {
       const response = await submitContact(form);
       if (response.success) {
         setStatus({ loading: false, success: true, error: null });
-        setForm({ name: '', email: '', message: '' });
+        setForm({ name: '', email: '', tier: 'ARIAS Core', width: '1200 mm', message: '' });
       }
     } catch (err) {
       setStatus({ loading: false, success: false, error: err.error || 'Request failed' });
     }
   };
-
-  useEffect(() => {
-    try {
-      const pre = localStorage.getItem('prefillModel');
-      if (pre) {
-        setForm(f => ({ ...f, model: pre }));
-        localStorage.removeItem('prefillModel');
-      }
-    } catch (err) {
-      // ignore
-    }
-  }, []);
 
   return (
     <section id="contact" className="py-40 bg-dark-900 relative overflow-hidden scroll-mt-[96px]">
@@ -81,73 +79,22 @@ const CTA = () => {
               />
             </div>
 
-            <div className="space-y-3">
-              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Company</label>
-              <input 
-                type="text" 
-                placeholder="Company / Institution"
-                value={form.company}
-                onChange={e => setForm({...form, company: e.target.value})}
-                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
-              />
-            </div>
-            <div className="space-y-3">
-              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Phone (optional)</label>
-              <input 
-                type="tel" 
-                placeholder="Phone number"
-                value={form.phone}
-                onChange={e => setForm({...form, phone: e.target.value})}
-                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
-              />
-            </div>
-
-            <div className="space-y-3">
-              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Location</label>
-              <input 
-                type="text" 
-                placeholder="City, Country"
-                value={form.location}
-                onChange={e => setForm({...form, location: e.target.value})}
-                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
-              />
-            </div>
-
             <div className="md:col-span-2">
               <h4 className="text-[10px] text-glow-cyan tracking-[0.25em] uppercase mb-3">Project details</h4>
             </div>
 
             <div className="space-y-3">
-              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Desired Model / Width</label>
-              <input 
-                type="text" 
-                placeholder="Model or width (e.g., 1200 mm)"
-                value={form.model}
-                onChange={e => setForm({...form, model: e.target.value})}
-                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
-              />
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">ARIAS tier</label>
+              <select value={form.tier} onChange={e => setForm({...form, tier: e.target.value})} className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all">
+                <option>ARIAS Core</option><option>ARIAS Vision</option><option>ARIAS Pro</option><option>ARIAS Prime</option><option>ARIAS Chem</option><option>ARIAS Walk-in</option><option>ARIAS Walk-in Chem</option>
+              </select>
             </div>
 
             <div className="space-y-3">
-              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Quantity</label>
-              <input 
-                type="number" 
-                min="1"
-                value={form.quantity}
-                onChange={e => setForm({...form, quantity: e.target.value})}
-                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
-              />
-            </div>
-
-            <div className="space-y-3">
-              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Target Timeline</label>
-              <input 
-                type="text" 
-                placeholder="e.g., Q3 2026, Immediate"
-                value={form.timeline}
-                onChange={e => setForm({...form, timeline: e.target.value})}
-                className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all placeholder:text-gray-600"
-              />
+              <label className="text-[10px] text-gray-400 tracking-[0.25em] uppercase ml-1">Working width</label>
+              <select value={form.width} onChange={e => setForm({...form, width: e.target.value})} className="w-full bg-[#0f1720] border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-cyan-400/50 transition-all">
+                <option>1200 mm</option><option>1500 mm</option><option>1800 mm</option><option>2100 mm</option>
+              </select>
             </div>
 
             <div className="md:col-span-2 space-y-3">

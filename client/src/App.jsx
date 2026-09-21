@@ -108,7 +108,7 @@ function App() {
               <div className="flex items-center gap-3 mb-6">
                 <img src="/logo.png" alt="ARIAS LABS" className="h-8 md:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-gray-500 text-sm font-light">Spanish laboratory furniture and fume hood manufacturer with more than 10 years of experience.</p>
+              <p className="text-gray-500 text-sm font-light">Product information is presented for preliminary project discussion. Final specifications, options and commercial terms are confirmed with each quotation.</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">
               <div className="space-y-4">
@@ -124,7 +124,7 @@ function App() {
                 <ul className="text-gray-500 text-xs space-y-3 font-light">
                   <li className="hover:text-white cursor-pointer transition-colors">ASHRAE 110</li>
                   <li className="hover:text-white cursor-pointer transition-colors">EN 14175</li>
-                  <li className="hover:text-white cursor-pointer transition-colors">ISO 9001</li>
+                  <li className="hover:text-white cursor-pointer transition-colors">Project-specific quotation</li>
                 </ul>
               </div>
               <div className="space-y-4">
