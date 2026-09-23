@@ -98,6 +98,9 @@ const DataTable = ({ headers, rows, highlightedColumns = [] }) => (
 const TierComparison = () => {
   const [activeTier, setActiveTier] = useState(0);
   const tier = tierDetails[activeTier];
+  const addedSpecs = activeTier === 0
+    ? []
+    : tierRows.filter((row) => row[activeTier + 1] !== row[activeTier]);
 
   return (
     <div className="border border-white/10 bg-[#0b1219]">
@@ -135,6 +138,19 @@ const TierComparison = () => {
           <div className="mt-6 border-l-2 border-cyan-300/70 bg-cyan-300/[0.05] px-4 py-3">
             <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-200">What this tier adds</div>
             <p className="mt-2 text-sm leading-relaxed text-gray-200">{tier.adds}</p>
+            {addedSpecs.length > 0 && (
+              <div className="mt-4 border-t border-cyan-200/10 pt-3">
+                <div className="text-[10px] uppercase tracking-[0.16em] text-gray-500">Specification changes</div>
+                <div className="mt-2 space-y-2">
+                  {addedSpecs.map((row) => (
+                    <div key={row[0]} className="grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-3 text-xs">
+                      <span className="text-gray-500">{row[0]}</span>
+                      <span className="text-right text-cyan-100">{row[activeTier]} <span className="text-cyan-300/60">→</span> {row[activeTier + 1]}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
